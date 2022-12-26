@@ -2,7 +2,7 @@ FROM debian
 
 ENTRYPOINT ["/root/run.sh"]
 ENV XMODIFIERS="@im=ibus"
-ENV QT_IM_MODULE="ibus" 
+ENV QT_IM_MODULE="ibus"
 ENV GTK_IM_MODULE="ibus"
 
 RUN sed -i "s/deb\.debian\.org/mirrors\.163\.com/" /etc/apt/sources.list

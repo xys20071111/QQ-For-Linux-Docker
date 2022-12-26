@@ -19,6 +19,7 @@ docker build -t qq-for-linux:latest ./
 ```
 docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v /tmp/.XIM-unix:/tmp/.XIM-unix -e DISPLAY=$DISPLAY --net=host qq-for-linux
 ```
-## 已知问题
+## 已知问题及解决方法（如有）
 QQ时不时就崩溃  
 有些时候会失效，遇到这种情况请重新构建镜像试试  
+无法使用输入法, 试试在`docker run`之后加上这些`-e XMODIFIERS="@im=ibus" -e QT_IM_MODULE="ibus" -e GTK_IM_MODULE="ibus"` 把ibus换成你的输入法，实在不行就复制粘贴吧，复制粘贴没问题
