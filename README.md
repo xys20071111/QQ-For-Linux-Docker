@@ -17,7 +17,7 @@ docker build -t qq-for-linux:latest ./
 ```
 最后运行
 ```
-docker run --rm -it -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket -v /tmp/.X11-unix:/tmp/.X11-unix -v /tmp/.XIM-unix:/tmp/.XIM-unix -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) --net=host qq-for-linux
+docker run --rm -it -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=1000 -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE --net=host qq-for-linux
 ```
 ## 已知问题及解决方法（如有）
 图标显示不正确  
