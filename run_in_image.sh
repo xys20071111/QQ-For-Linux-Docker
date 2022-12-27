@@ -1,4 +1,7 @@
 #!/bin/bash
+export XMODIFIERS="@im=ibus"
+export QT_IM_MODULE="ibus"
+export GTK_IM_MODULE="ibus"
 random_id=a$RANDOM
 useradd -u $UID "$random_id"
 echo "${random_id}:123456" | chpasswd
