@@ -17,9 +17,9 @@ docker build -t qq-for-linux:latest ./
 ```
 最后运行
 ```
-docker run --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v /tmp/.XIM-unix:/tmp/.XIM-unix -e DISPLAY=$DISPLAY --net=host qq-for-linux
+docker run --privileged --rm -it -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket -v /tmp/.X11-unix:/tmp/.X11-unix -v /tmp/.XIM-unix:/tmp/.XIM-unix -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) --net=host qq-for-linux
 ```
 ## 已知问题及解决方法（如有）
-QQ时不时就崩溃  
+图标显示不正确  
 有些时候会失效，遇到这种情况请重新构建镜像试试  
 无法使用输入法, 试试在`docker run`之后加上这些`-e XMODIFIERS="@im=ibus" -e QT_IM_MODULE="ibus" -e GTK_IM_MODULE="ibus"` 把ibus换成你的输入法，实在不行就复制粘贴吧，复制粘贴没问题
