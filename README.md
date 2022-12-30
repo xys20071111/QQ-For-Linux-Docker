@@ -21,7 +21,7 @@ docker build -t qq-for-linux:latest ./
 最后运行
 ```
 docker run  --name qq \
-            --rm -d  \
+            --rm -d \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
@@ -35,3 +35,12 @@ docker run  --name qq \
 ## 已知问题及解决方法（如有）
 图标显示不正确   
 无法使用输入法,我把输入法引擎换成了fcitx就好了
+
+## Q&A
+
+### 为什么要做这个镜像？
+<del>Windows底下我管不了你QQ，Linux底下我还管不了你QQ了?</del>  
+最开始是因为没有新版QQ的内测权限，于是用Docker卡bug来登陆，现在就只是用来隔离QQ,防止扫盘  
+
+### 为什么要安装Firefox?
+不装Firefox打不开外部网页
