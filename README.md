@@ -10,15 +10,7 @@
 ```
 xhost +
 ```
-下载 QQ for Linux
-```
-wget https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb
-```
-然后构建镜像
-```
-docker build -t qq-for-linux:latest ./
-```
-最后运行
+运行
 ```
 docker run  --name qq \
             --rm -d \
@@ -29,7 +21,7 @@ docker run  --name qq \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
             --net=host \
-            qq-for-linux
+            xys20071111/qq-for-linux:latest
 ```
 
 ## 已知问题及解决方法（如有）
