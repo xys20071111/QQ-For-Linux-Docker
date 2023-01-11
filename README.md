@@ -32,7 +32,7 @@ xhost +
 ```
 下载 QQ for Linux
 ```
-wget https://dldir1.qq.com/qqfile/qq/QQNT/64bd2578/linuxqq_3.0.0-565_amd64.deb
+wget https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb
 ```
 然后构建镜像
 ```
