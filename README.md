@@ -22,7 +22,6 @@ docker run  --name qq \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
-            --net=host \
             xys20071111/qq-for-linux:latest
 ```
 ### 手动构建
@@ -48,7 +47,6 @@ docker run  --name qq \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
-            --net=host \
             qq-for-linux:latest
 ```
 
