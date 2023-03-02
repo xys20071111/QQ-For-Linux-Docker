@@ -29,10 +29,7 @@ docker run  --name qq \
 ```
 xhost +
 ```
-下载 QQ for Linux
-```
-wget https://dldir1.qq.com/qqfile/qq/QQNT/c005c911/linuxqq_3.0.0-571_amd64.deb
-```
+去QQ官网下载 QQ for Linux的deb安装包，放到目录里
 然后构建镜像
 ```
 docker build -t qq-for-linux:latest ./

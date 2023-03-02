@@ -2,7 +2,7 @@ FROM debian
 LABEL maintainer="xys20071111@hotmail.com"
 ENTRYPOINT ["bash", "-c", "/root/run.sh"]
 
-COPY ./linuxqq_3.0.0-565_amd64.deb /root/linuxqq_3.0.0-571_amd64.deb
+COPY ./linuxqq_3.1.0-9572_amd64.deb /root/linuxqq_3.0.0-571_amd64.deb
 COPY ./run_in_image.sh /root/run.sh
 RUN sed -i "s/deb\.debian\.org/mirrors\.163\.com/" /etc/apt/sources.list
 RUN apt update && \
