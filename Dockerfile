@@ -1,8 +1,8 @@
-FROM debian
+FROM debian:bullseye
 LABEL maintainer="xys20071111@hotmail.com"
 ENTRYPOINT ["bash", "-c", "/root/run.sh"]
 
-COPY ./linuxqq_3.1.1-11223_amd64.deb /root/linuxqq_3.0.0-571_amd64.deb
+COPY ./linuxqq_3.2.1-17153_amd64.deb /root/linuxqq_3.0.0-571_amd64.deb
 COPY ./run_in_image.sh /root/run.sh
 RUN sed -i "s/deb\.debian\.org/mirrors\.163\.com/" /etc/apt/sources.list
 RUN apt update && \
