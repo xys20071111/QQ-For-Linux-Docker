@@ -5,7 +5,6 @@
 </del>  
 
 正式版已经发布了，这个镜像仅用于隔离QQ  
-__注意：看起来现在必须是特权容器了__
 ## 使用方法
 
 ### 使用预构建镜像
@@ -16,7 +15,7 @@ xhost +
 运行
 ```
 docker run  --name qq \
-            --rm -d --privileged\
+            --rm -d \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
@@ -38,7 +37,7 @@ docker build -t qq-for-linux:latest ./
 最后运行
 ```
 docker run  --name qq \
-            --rm -d --privileged\
+            --rm -d \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
