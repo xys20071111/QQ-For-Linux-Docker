@@ -42,7 +42,7 @@ xhost +
 构建镜像
 
 ```
-docker build -t qq-for-linux:latest ./
+docker build -t qq-for-linux:latest ./original
 ```
 
 最后运行
@@ -73,7 +73,7 @@ Linux的deb安装包，重命名为`qq.deb`然后放到`liteloader`目录里\
 构建镜像
 
 ```
-docker build -t qq-for-linux:latest-liteloader ./
+docker build -t qq-for-linux:latest-liteloader ./liteloader
 ```
 
 最后运行
