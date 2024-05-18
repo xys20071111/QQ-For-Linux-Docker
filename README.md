@@ -30,7 +30,7 @@ docker run  --name qq \
             xys20071111/qq-for-linux:latest
 ```
 
-### 手动构建
+### 手动构建 (原版)
 
 先设置`xhost` (这一步每次开机都要运行)
 
@@ -38,7 +38,8 @@ docker run  --name qq \
 xhost +
 ```
 
-去QQ官网下载 QQ for Linux的deb安装包，重命名为`qq.deb`然后放到目录里， 构建镜像
+去QQ官网下载 QQ for Linux的deb安装包，重命名为`qq.deb`然后放到`original`目录里，
+构建镜像
 
 ```
 docker build -t qq-for-linux:latest ./
@@ -56,6 +57,37 @@ docker run  --name qq \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
             qq-for-linux:latest
+```
+
+### 手动构建 (安装liteloader)
+
+先设置`xhost` (这一步每次开机都要运行)
+
+```
+xhost +
+```
+
+去QQ官网下载 QQ for
+Linux的deb安装包，重命名为`qq.deb`然后放到`liteloader`目录里\
+然后去[这里](https://github.com/LiteLoaderQQNT/LiteLoaderQQNT)下载liteloader.zip，放到`liteloader`目录里
+构建镜像
+
+```
+docker build -t qq-for-linux:latest-liteloader ./
+```
+
+最后运行
+
+```
+docker run  --name qq \
+            --rm -d \
+            -v 保存数据的位置:/home/user \
+            -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
+            -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
+            -v /tmp/.X11-unix:/tmp/.X11-unix \
+            -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
+            -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
+            qq-for-linux:latest-liteloader
 ```
 
 ## 已知问题及解决方法（如有）
