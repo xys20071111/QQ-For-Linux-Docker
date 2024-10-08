@@ -20,7 +20,7 @@ xhost +
 
 ```
 docker run  --name qq \
-            --rm -d \
+            --rm -d --privileged \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
@@ -49,7 +49,7 @@ docker build -t qq-for-linux:latest ./original
 
 ```
 docker run  --name qq \
-            --rm -d \
+            --rm -d --privileged \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
@@ -80,7 +80,7 @@ docker build -t qq-for-linux:latest-liteloader ./liteloader
 
 ```
 docker run  --name qq \
-            --rm -d \
+            --rm -d --privileged \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
             -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \

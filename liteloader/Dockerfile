@@ -14,6 +14,5 @@ RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && DEBIAN_FRONTEND=n
 RUN mkdir /opt/liteloader/ && \
     cd /opt/liteloader && \
     unzip /root/LiteLoaderQQNT.zip && \
-    cat /opt/QQ/resources/app/app_launcher/index.js > /root/index.raw.js && \
-    echo "require('/opt/liteloader');" > /opt/QQ/resources/app/app_launcher/index.js && \
-    cat /root/index.raw.js >> /opt/QQ/resources/app/app_launcher/index.js
+    echo "require(String.raw\`/opt/liteloader\`)" > /opt/QQ/resources/app/app_launcher/liteloader.js && \
+    sed -i 's/\.\/application\/app_launcher\/index\.js/\.\/app_launcher\/liteloader\.js/g' /opt/QQ/resources/app/package.json
