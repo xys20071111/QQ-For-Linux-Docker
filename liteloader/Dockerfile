@@ -15,4 +15,4 @@ RUN mkdir /opt/liteloader/ && \
     cd /opt/liteloader && \
     unzip /root/LiteLoaderQQNT.zip && \
     echo "require(String.raw\`/opt/liteloader\`)" > /opt/QQ/resources/app/app_launcher/liteloader.js && \
-    sed -i 's/\.\/application\/app_launcher\/index\.js/\.\/app_launcher\/liteloader\.js/g' /opt/QQ/resources/app/package.json
+    sed -i 's/\.\/application.asar\/app_launcher\/index\.js/\.\/app_launcher\/liteloader\.js/g' /opt/QQ/resources/app/package.json

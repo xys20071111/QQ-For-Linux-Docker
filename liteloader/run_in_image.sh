@@ -1,4 +1,5 @@
 #!/bin/bash
+sed -i 's/\.\/application\/app_launcher\/index\.js/\.\/app_launcher\/liteloader\.js/g' /opt/QQ/resources/app/package.json
 useradd -u $UID user
 echo "user:123456" | chpasswd
 chown user:user /home/user/
