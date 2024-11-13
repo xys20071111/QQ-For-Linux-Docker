@@ -90,7 +90,6 @@ docker run  --name qq \
 ## 已知问题及解决方法（如有）
 
 无法使用基于ibus的输入法,我把输入法引擎换成了fcitx就好了
-liteloader版点击设置会崩溃
 
 ## Q&A
 
