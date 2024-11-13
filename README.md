@@ -13,17 +13,16 @@
 先设置`xhost` (这一步每次开机都要运行)
 
 ```
-xhost +
+xhost +SI:localuser:$(whoami)
 ```
 
 运行
 
 ```
 docker run  --name qq \
-            --rm -d --privileged \
+            --rm -d --cap-add=SYS_ADMIN --security-opt=no-new-privileges \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
-            -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
@@ -35,7 +34,7 @@ docker run  --name qq \
 先设置`xhost` (这一步每次开机都要运行)
 
 ```
-xhost +
+xhost +SI:localuser:$(whoami)
 ```
 
 去QQ官网下载 QQ for Linux的deb安装包，重命名为`qq.deb`然后放到`original`目录里，
@@ -49,10 +48,9 @@ docker build -t qq-for-linux:latest ./original
 
 ```
 docker run  --name qq \
-            --rm -d --privileged \
+            --rm -d --cap-add=SYS_ADMIN --security-opt=no-new-privileges \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
-            -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
@@ -64,7 +62,7 @@ docker run  --name qq \
 先设置`xhost` (这一步每次开机都要运行)
 
 ```
-xhost +
+xhost +SI:localuser:$(whoami)
 ```
 
 去QQ官网下载 QQ for
@@ -80,10 +78,9 @@ docker build -t qq-for-linux:latest-liteloader ./liteloader
 
 ```
 docker run  --name qq \
-            --rm -d --privileged \
+            --rm -d --cap-add=SYS_ADMIN --security-opt=no-new-privileges \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
-            -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" -e UID=$(id -u) \
             -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
@@ -104,3 +101,7 @@ docker run  --name qq \
 ### 为什么要安装Firefox?
 
 不装Firefox打不开外部网页
+
+## 致谢
+感谢 [@cs231giCjh3](https://github.com/cs231giCjh3) 在权限限制方面的建议
+
