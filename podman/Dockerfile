@@ -1,10 +1,11 @@
-FROM debian:latest
+FROM debian:trixie
 LABEL maintainer="xys20071111@hotmail.com"
+ARG UID=1000
 ENTRYPOINT ["bash", "-c", "/usr/local/bin/run.sh"]
 
 COPY ./qq.deb /root/qq.deb
 COPY ./run_in_image.sh /usr/local/bin/run.sh
-RUN useradd user &&\
+RUN useradd -u ${UID} user &&\
     mkdir -p /home/user/ &&\
     echo "user:123456" | chpasswd &&\
     chown user:user /home/user/

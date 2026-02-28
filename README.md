@@ -87,6 +87,34 @@ docker run  --name qq \
             qq-for-linux:latest-liteloader
 ```
 
+### 手动构建（Podman版）
+
+先设置`xhost` (这一步每次开机都要运行)
+
+```
+xhost +SI:localuser:$(whoami)
+```
+
+去QQ官网下载 QQ for Linux的deb安装包，重命名为`qq.deb`然后放到`original`目录里，
+构建镜像
+
+```
+docker build --build-arg UID=$(id -u) -t qq-for-linux:latest ./original
+```
+
+最后运行
+
+```
+docker run  --name qq \
+            --rm -d --cap-add=SYS_ADMIN --security-opt=no-new-privileges --userns keep-id --group-add keep-groups \
+            -v 保存数据的位置:/home/user \
+            -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
+            -v /tmp/.X11-unix:/tmp/.X11-unix \
+            -e DISPLAY=$DISPLAY --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" \
+            -e LANG -e XMODIFIERS -e QT_IM_MODULE -e GTK_IM_MODULE \
+            qq-for-linux:latest
+```
+
 ## 已知问题及解决方法（如有）
 
 可能无法使用基于ibus的输入法,遇到这种情况可以考虑换成基于fcitx的输入法
