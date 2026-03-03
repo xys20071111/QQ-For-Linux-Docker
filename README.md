@@ -105,7 +105,7 @@ docker build --build-arg UID=$(id -u) -t qq-for-linux:latest ./original
 最后运行
 
 ```
-docker run  --name qq \
+podman run  --name qq \
             --rm -d --cap-add=SYS_ADMIN --security-opt=no-new-privileges --userns keep-id --group-add keep-groups \
             -v 保存数据的位置:/home/user \
             -v /run/user/$(id -u)/bus:/run/user/$(id -u)/bus \
@@ -117,7 +117,7 @@ docker run  --name qq \
 
 ## 已知问题及解决方法（如有）
 
-可能随便点个东西QQ就会卡死
+可能随便点个东西QQ就会卡死（我自己在Gnome下试了两次都是点开聊天就卡死；KDE下比较随机，其他桌面环境不清楚）
 
 ## Q&A
 
